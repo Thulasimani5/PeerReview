@@ -9,7 +9,7 @@ export default (
     wrapper: {
       flexDirection: 'row', // Align items in a row
       alignItems: 'center',
-      gap: 8, // Add spacing between checkbox and label
+      gap: 25, // Add spacing between checkbox and label
     },
     container: {
       width: 24,

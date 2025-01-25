@@ -1,12 +1,18 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Navigation from './src/navigation/Navigation';
-
 
 export default function App() {
   return (
-    <View style={{backgroundColor:'blue',flex:1}}>
-    <Navigation/>
+    <View style={styles.container}>
+      <Navigation />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#e8f0fe', // Mild blue background
+  },
+});

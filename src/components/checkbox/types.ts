@@ -10,4 +10,6 @@ export type TCheckBox = Omit<TouchableOpacityProps, 'onPress'> & {
   onPress?: (state: boolean) => void;
   // Label as a string or custom component
   label?: string | React.ReactNode;
+  name:string;
+  rollNo : string;
 };
