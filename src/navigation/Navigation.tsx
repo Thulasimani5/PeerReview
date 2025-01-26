@@ -5,6 +5,8 @@ import HomeScreen from '../screens/HomeScreen';
 import AttendanceScreen from '../screens/AttendanceScreen';
 import StudentDashboard from '../screens/Student/StudentDashboard';
 import Question from '../screens/Student/Questions';
+import DataEntryScreen from '../screens/Student/Ranking';
+import ResultScreen from '../screens/Student/Result';
 export default function Navigation() {
   const Stack = createNativeStackNavigator();
 
@@ -26,6 +28,12 @@ export default function Navigation() {
           component={Question}
           options={{headerShown: false}} // This hides the default title/header
         />
+        <Stack.Screen
+          name="ResultScreen"
+          component={ResultScreen}
+          options={{headerShown: false}} // This hides the default title/header
+        />
+        <Stack.Screen name="DataEntryScreen" component={DataEntryScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

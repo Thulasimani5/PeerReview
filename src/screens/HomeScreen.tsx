@@ -6,11 +6,7 @@ import { useNavigation } from '@react-navigation/native'; // Import useNavigatio
 
 export default function HomeScreen() {
   const navigation = useNavigation();
-  const [selectedJane, setSelectedJane] = useState(true);
 
-  const handleCheckboxPressJane = (newState: boolean) => {
-    setSelectedJane(newState); // Toggle Jane Smith's checkbox state
-  };
   
   return (
     <View style={styles.container}>
