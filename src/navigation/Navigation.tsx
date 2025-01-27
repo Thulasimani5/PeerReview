@@ -1,30 +1,43 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
+import AdminScreen from '../screens/Admin/adminDashboard';
 import AttendanceScreen from '../screens/AttendanceScreen';
 import StudentDashboard from '../screens/Student/StudentDashboard';
 import Question from '../screens/Student/Questions';
+import CreateAssignment from '../screens/Admin/CreateAssignment';
+import DetailPage from '../screens/Admin/DetailPage';
 export default function Navigation() {
   const Stack = createNativeStackNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName='Admin'>
+      <Stack.Screen
+          name="Admin"
+          component={AdminScreen}
+          options={{headerShown: false}} 
+        />
       <Stack.Screen
           name="StudentDashboard"
           component={StudentDashboard}
-          options={{headerShown: false}} // This hides the default title/header
+          options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{headerShown: false}} // This hides the default title/header
-        />
+        name='CreateAssignment'
+        component={CreateAssignment}
+        options={{headerShown:false}}/>
+        <Stack.Screen
+        name='DetailPage'
+        component={DetailPage}
+        options={{headerShown:false}}/>
+
+
+
         <Stack.Screen
           name="Question"
           component={Question}
-          options={{headerShown: false}} // This hides the default title/header
+          options={{headerShown: false}} 
         />
       </Stack.Navigator>
     </NavigationContainer>

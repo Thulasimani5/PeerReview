@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Pressable, FlatList } from 'react-native';
 import { Checkbox } from '../components/checkbox/Checkbox'; // Import Checkbox component
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import ArrowBack from '../assets/icons/ArrowBack';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Define a type for the route params
 type AttendanceScreenRouteProps = RouteProp<{ AttendanceScreen: { initialData?: AttendanceData[] } }, 'AttendanceScreen'>;
@@ -46,6 +47,7 @@ export default function AttendanceScreen({ route }: AttendanceScreenProps) {
   };
 
   return (
+    <SafeAreaView>
     <View style={styles.container}>
       {/* Back Arrow */}
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -64,13 +66,10 @@ export default function AttendanceScreen({ route }: AttendanceScreenProps) {
             <Checkbox
               selected={item.selected}
               onPress={(newState) => handleCheckboxPress(item.id, newState)}
-              label={
-                <View style={styles.labelContainer}>
-                  <Text style={styles.nameText}>{item.name}</Text>
-                  <Text style={styles.rollNoText}>Roll No: {item.rollNo}</Text>
-                </View>
-              }
-            />
+              label={<View style={styles.labelContainer}>
+                <Text style={styles.nameText}>{item.name}</Text>
+                <Text style={styles.rollNoText}>Roll No: {item.rollNo}</Text>
+              </View>} name={''} rollNo={''}            />
           </View>
         )}
       />
@@ -80,6 +79,7 @@ export default function AttendanceScreen({ route }: AttendanceScreenProps) {
         <Text style={styles.startButtonText}>Start</Text>
       </Pressable>
     </View>
+    </SafeAreaView>
   );
 }
 
