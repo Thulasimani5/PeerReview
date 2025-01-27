@@ -19,7 +19,8 @@ const TitleCard: React.FC<TitleCardProps> = ({
 }) => {
   const navigation = useNavigation();
 
-  const isCompleted = ButtonText === "Failed";
+  // Check if the result is "Failed" or "Passed" and disable the button
+  const isCompleted = ButtonText === "Failed" || ButtonText === "Passed";
 
   const handleButtonPress = () => {
     if (!isCompleted) {
@@ -43,11 +44,10 @@ const TitleCard: React.FC<TitleCardProps> = ({
       </View>
       {button && (
         <TouchableOpacity
-          style={[styles.button, isCompleted ? styles.completedButton : styles.defaultButton]}
+          style={[styles.button, ButtonText === "Passed" ? styles.passedButton : isCompleted ? styles.failedButton : styles.defaultButton]}
           onPress={handleButtonPress}
           activeOpacity={isCompleted ? 1 : 0.7}
-          accessibilityLabel={isCompleted ? 'Completed button' : 'Start Questions button'}
-          accessible
+          disabled={isCompleted} // Disable the button entirely if completed
         >
           <Text style={styles.buttonText}>{ButtonText}</Text>
         </TouchableOpacity>
@@ -97,8 +97,11 @@ const styles = StyleSheet.create({
   defaultButton: {
     backgroundColor: '#007bff',
   },
-  completedButton: {
-    backgroundColor: '#ff0000',
+  passedButton: {
+    backgroundColor: '#28a745', // Green color for passed
+  },
+  failedButton: {
+    backgroundColor: '#ff0000', // Red color for failed
   },
   buttonText: {
     color: '#ffffff',
